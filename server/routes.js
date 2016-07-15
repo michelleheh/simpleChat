@@ -45,7 +45,7 @@ const joinRoom = function(socket, rooms, data, clients) {
     rooms[room].forEach((client) => console.log(`currrently in the room ${room}: ${client.name}`));
 
     console.log(`${socket.name} joined ${room}`);
-    console.log(`updated room users in ${room}:`);
+    console.log(`updated room users in ${room}: ${rooms[room].length}`);
     rooms[room].forEach((client) => console.log(client.name));
     socket.write('end of list.\n');
   }
@@ -62,12 +62,13 @@ const leaveRoom = function(socket, rooms, clients) {
     broadcastLeft(socket, room, clients);
 
     console.log(`${socket.name} left ${room}`);
-    console.log(`updated room users in ${room}:`);
+    console.log(`updated room users in ${room}: ${rooms[room].length}`);
     rooms[room].forEach((client) => console.log(client.name));
   }
 };
 
-const quit = function(socket, clients) {
+const quit = function(socket, rooms, clients) {
+  if ( socket.room ) leaveRoom(socket, rooms, clients);
   console.log(`${socket.name} closed connection!`);
   socket.write('BYE\n')
   closeSocket(socket, clients);

@@ -23,14 +23,18 @@ const chat = (socket) => {
     // leaving chat room
     else if (data === '/leave') routes.leaveRoom(socket, rooms, clients)
     // end socket connection
-    else if (data === '/quit') routes.quit(socket, clients);
+    else if (data === '/quit') routes.quit(socket, rooms, clients);
     // conversation
     else broadcast(socket, socket.room, data, clients)
 
   });
+
+  // error handling
   socket.on('error', (err) => {
     console.log(err);
   });
+  
+  // close socket
   socket.on('end', () => closeSocket(socket, clients));
 };
 
