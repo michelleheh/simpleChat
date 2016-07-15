@@ -1,5 +1,4 @@
 ## What is This?
----
 This is simple server side Telnet chat app. The server is deployed on AWS EC2.
 
 ### Getting Started
