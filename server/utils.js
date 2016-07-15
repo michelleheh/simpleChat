@@ -1,6 +1,6 @@
 const broadcast = (socket, room, data, clients) => {
   clients.forEach((currentSocket) => {
-    if ( currentSocket !== socket ) currentSocket.write(`${socket.name}: ${data}\n`);
+    if ( currentSocket !== socket && currentSocket.room === room ) currentSocket.write(`${socket.name}: ${data}\n`);
   });
 };
 
