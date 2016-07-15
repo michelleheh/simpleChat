@@ -67,12 +67,14 @@ const leaveRoom = function(socket, rooms, clients) {
   }
 };
 
-const quit = function(socket, rooms, clients) {
+const quit = function(socket, rooms, clients, usernames) {
   if ( socket.room ) leaveRoom(socket, rooms, clients);
-  console.log(`${socket.name} closed connection!`);
+  usernames[socket.name] = false;
   socket.write('BYE\n')
   closeSocket(socket, clients);
   socket.end();
+
+  console.log(`${socket.name} closed connection!`);
 };
 
 module.exports = {
