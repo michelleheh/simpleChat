@@ -1,5 +1,5 @@
 ## What is This?
-This is simple server side Telnet chat app. The server is deployed on AWS EC2.
+* This is simple server side Telnet chat app. The server is deployed on AWS EC2.
 ---
 
 ### Getting Started
@@ -16,3 +16,8 @@ node server/server.js
 ```
 telnet 54.164.129.130 9399
 ```
+* routes
+`/rooms` to get all the active rooms
+`/join chat` to join the room called chat
+`/leave` to leave the room
+`/quit` to close socket connetion
