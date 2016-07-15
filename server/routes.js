@@ -57,9 +57,9 @@ const leaveRoom = function(socket, rooms, clients) {
     socket.write('You are not in a room yet!\n');
     getRoom(socket, rooms);
   } else {
-    delete socket[room];
     rooms[room].splice(rooms[room].indexOf(socket), 1);
     broadcastLeft(socket, room, clients);
+    socket.room = '';
 
     console.log(`${socket.name} left ${room}`);
     console.log(`updated room users in ${room}: ${rooms[room].length}`);
