@@ -19,4 +19,4 @@ telnet 54.164.129.130 9399
   * `/rooms` to get all the active rooms
   * `/join chat` to join the room called chat
   * `/leave` to leave the room
-  * `/quit` to close socket connetion
+  * `/quit` to close socket connection
